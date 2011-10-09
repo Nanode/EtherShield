@@ -1,11 +1,18 @@
 // a wrapper class for EtherShield
 
+#if (ARDUINO >= 100)
+#include <Arduino.h>
+#endif
+
 extern "C" {
 	#include "ip_config.h"
 	#include "enc28j60.h"
 	#include "ip_arp_udp_tcp.h"
 	#include "websrv_help_functions.h"
+	#if (ARDUINO >= 100)
+#else
 	#include "wiring.h"
+#endif
 #ifdef DNS_client
 	#include "dnslkup.h"
 #endif
